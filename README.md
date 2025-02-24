@@ -66,13 +66,15 @@ def process_pdf_task(document_id):
     pages = list(range(1, page_count + 1))
 
 
-    task = chain(
+    # We could have used chain, but we want combine_result to be called only once
+    # after all the extract_text_from_pdf and extract_named_entities tasks are completed.
+    task = chord(
         group(
             chain(
-                extract_text_from_pdf.s(document_id, pages) |
+                extract_text_from_pdf.s(document_id, pages),
                 extract_named_entities.s()
             ) for pages in chunk_list(pages, 2)
-        ) |
+        ),
         combine_result.s(document_id)
     )
     
@@ -168,13 +170,13 @@ Refer [Starting Celery With Options](./Celery%20Commands.md) section for more.
 Workflow looks like below:
 
 ```python
-task = chain(
+task = chord(
     group(
         chain(
-            extract_text_from_pdf.s(document_id, pages) |
+            extract_text_from_pdf.s(document_id, pages),
             extract_named_entities.s()
         ) for pages in chunk_list(pages, 2)
-    ) |
+    ),
     combine_result.s(document_id)
 )
 ```
@@ -230,3 +232,5 @@ Note that:
 ## References:
 
 - [Starting Celery Worker, Options](./Celery%20Commands.md)
+
+- [Understandnig group, chains and chords](./Group,%20Chain%20and%20Chords.md)
