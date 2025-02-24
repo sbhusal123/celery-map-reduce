@@ -181,21 +181,7 @@ task = chord(
 )
 ```
 
-```sh
-        process_pdf
-             |
-      -------------------------
-      |           |           |
- extract_text   extract_text  extract_text
-   (1,2)         (3,4)        (5,6)
-      |           |           |
- extract_entity  extract_entity extract_entity
-   (1,2)         (3,4)        (5,6)
-      |___________|___________|
-             |
-     combine_result
-
-```
+![Workflow](./Workflow.jpg)
 
 1. At first ``process_pdf`` task is triggered.
 
