@@ -14,7 +14,7 @@ task = group(
 task.apply_async()
 ```
 
-```
+```sh
                   Start
                     |
                     |
@@ -30,6 +30,7 @@ Here, all the task runs parallely and are independent of each other.
 
 - Used when a task is to be executed after finishing previous task.
 
+```sh
 task = chain(
     add.s(a, b),
     subtract.s(b),
