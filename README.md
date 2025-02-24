@@ -199,7 +199,7 @@ task = chord(
 
 1. At first ``process_pdf`` task is triggered.
 
-2. Internally it splits the pdf to be processed into group of 3 pages to feed to extract_text task. For example, if there is 6 pages in pdf, group of 3 task is created to execute parallely. So, there is a group of 3 task. **This is called task groupping to run parallely.**
+2. Internally, it chunks the no of pages into 2 pages, i.e. if 6 pages were there, on chunking it with 2 subscequent pages, we get a 3 group of 2 pages.
 
 3. Those group of three task execute parallely. When a individual task (extract_pdf) is finished executing, with the return of extract_pdf task, it executes extract_entity task. **This is called chaining, i.e. runing task B after finishing task A.**
 
