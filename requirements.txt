@@ -1,0 +1,4 @@
+Django==5.1.6
+celery==5.4.0
+redis==5.2.1
+pdfplumber==0.11.5

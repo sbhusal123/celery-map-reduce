@@ -1,0 +1,17 @@
+# env / venv
+env
+
+
+# cache
+__pycache__/*
+*.pyc
+
+# sqlfile
+*.sqlite3
+
+# envs
+.env
+
+# static and media
+*/media/*
+*/static/*
