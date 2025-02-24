@@ -19,8 +19,7 @@ def chunk_list(lst, chunk_size):
 @shared_task
 def process_pdf_task(document_id):
     """
-    A Celery task to send an email to a user.
-    This task is assigned to the 'high_priority' queue.
+    A Celery task to trigger pdf processing workflow.
     """
     Document = apps.get_model("foo", "Document")
     document = Document.objects.get(id=document_id)
