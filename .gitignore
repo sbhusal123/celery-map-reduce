@@ -15,3 +15,5 @@ __pycache__/*
 # static and media
 */media/*
 */static/*
+
+.qodo
